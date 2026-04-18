@@ -12,37 +12,40 @@
 <body>
 
     <main class="grid-container">
-        <section class="info grid-item">
+        <section class="info left__side">
             <div class="company__info">
                 <img src="/assets/images/main-logo.png" alt="main-logo">
                 <p>Lorem Ipsum</p>
                 <div class="line"></div>
             </div>
         </section>
-        <section class="content grid-item">
+        <section class="content right__side">
             <div class="form">
                 <h1>Registration</h1>
                 <div class="form__container">
                     <form action="n8n.com" method="post">
                         <label for="lastName">Last Name:</label>
-                        <input type="text" name="lastName">
+                        <input type="text" name="lastName" placeholder="Doe" required>
 
                         <label for="firstName">First Name:</label>
-                        <input type="text" name="firstName">
+                        <input type="text" name="firstName" placeholder="John" required>
 
                         <label for="telephone">Telephone:</label>
-                        <input type="number" name="telephone" min="0" max="11">
+                        <input type="number" name="telephone" placeholder="090*****123" required>
+
+                        <label for="address">Address:</label>
+                        <input type="text" name="address" required>
 
                         <label for="age">Age:</label>
-                        <input type="number" name="age" min="0">
+                        <input type="number" name="age" min="0" placeholder="25" required>
 
                         <label for="email">Email:</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" placeholder="johndoe@email.com" required>
 
                         <label for="visa">Visa:</label>
-                        <input type="text" name="visa">
+                        <input type="text" name="visa" placeholder="Permanent Visa">
 
-                        <button>Submit</button>
+                        <button class="btn__submit">Submit</button>
                     </form>
                 </div>
             </div>
