@@ -10,6 +10,10 @@
   font-display: swap;
 }
 
+:root {
+  --border: #1d242b;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -17,33 +21,45 @@
 }
 
 html {
-  background-color: #c7eeff;
+  /* background-color: #c7eeff; */
 }
 
 body {
-  border: 1px solid #1d242b;
-  width: 100%;
+  border: 1px solid var(--border);
   max-width: 1024px;
   height: 100dvh;
   margin: 0 auto;
-  background-color: #fafafa;
-  border-radius: 10px;
+  border-radius: 16px;
 }
 
-main {
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    "info info content content content"
+    "info info content content content"
+    "info info content content content"
+    "info info content content content"
+    "info info content content content";
+}
+
+.info {
+  grid-area: info;
   border: 1px solid red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+}
 
-  .left__side {
-    border: 1px solid blue;
-    width: 30%;
-  }
+.content {
+  grid-area: content;
+  border: 1px solid red;
+}
 
-  .right__side {
-    border: 1px solid orange;
-    flex: 1;
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "info"
+      "content";
   }
 }
