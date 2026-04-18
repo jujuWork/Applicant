@@ -18,6 +18,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins";
 }
 
 html {
@@ -25,12 +26,16 @@ html {
 }
 
 body {
-  border: 1px solid var(--border);
+  border: 1px solid black;
+  width: 100%;
   max-width: 1024px;
-  height: 100dvh;
   margin: 0 auto;
   border-radius: 16px;
 }
+
+/* 
+======== GRID SETTING ======== 
+*/
 
 .grid-container {
   display: grid;
@@ -44,14 +49,18 @@ body {
     "info info content content content";
 }
 
+/* .grid-item {
+  border: 1px solid red;
+} */
+
 .info {
   grid-area: info;
-  border: 1px solid red;
+  position: relative;
 }
 
 .content {
   grid-area: content;
-  border: 1px solid red;
+  position: relative;
 }
 
 @media screen and (max-width: 768px) {
@@ -61,5 +70,59 @@ body {
     grid-template-areas:
       "info"
       "content";
+  }
+}
+
+/* CONTENT */
+
+.company__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    width: clamp(150px, 15vw, 300px);
+    filter: drop-shadow(1px 4px 1px var(--border));
+  }
+
+  .line {
+    border-bottom: 1px solid var(--border);
+    width: 80%;
+    margin: 10px 0 10px 0;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: clamp(20px, 5vw, 50px);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+  }
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  input {
+    border: none;
+    border-bottom: 1px solid var(--border);
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }

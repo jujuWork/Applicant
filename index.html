@@ -11,10 +11,43 @@
 
 <body>
 
-    <div class="grid-container">
-        <div class="info grid-item">1</div>
-        <div class="content grid-item">2</div>
-    </div>
+    <main class="grid-container">
+        <section class="info grid-item">
+            <div class="company__info">
+                <img src="/assets/images/main-logo.png" alt="main-logo">
+                <p>Lorem Ipsum</p>
+                <div class="line"></div>
+            </div>
+        </section>
+        <section class="content grid-item">
+            <div class="form">
+                <h1>Registration</h1>
+                <div class="form__container">
+                    <form action="n8n.com" method="post">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName">
+
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName">
+
+                        <label for="telephone">Telephone:</label>
+                        <input type="number" name="telephone" min="0" max="11">
+
+                        <label for="age">Age:</label>
+                        <input type="number" name="age" min="0">
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email">
+
+                        <label for="visa">Visa:</label>
+                        <input type="text" name="visa">
+
+                        <button>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
