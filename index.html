@@ -23,7 +23,7 @@
             <div class="form" id="form">
                 <h1>Registration</h1>
                 <div class="form__container">
-                    <form action="n8n.com" method="post">
+                    <form action="n8n.com" method="post" id="registrationForm" novalidate>
                         <label for="lastName">Last Name:</label>
                         <input type="text" name="lastName" placeholder="Doe" required>
 
@@ -34,7 +34,7 @@
                         <input type="number" name="telephone" placeholder="090*****123" required>
 
                         <label for="address">Address:</label>
-                        <input type="text" name="address" required>
+                        <input type="text" name="address" placeholder="Full Adress" required>
 
                         <label for="age">Age:</label>
                         <input type="number" name="age" min="0" placeholder="25" required>
@@ -45,6 +45,9 @@
                         <label for="visa">Visa:</label>
                         <input type="text" name="visa" placeholder="Permanent Visa">
 
+                        <label for="license">Driver licence:</label>
+                        <input type="text" name="license" placeholder="Have / Haven`t">
+
                         <button type="submit" class="btn__submit">Submit</button>
                     </form>
                 </div>
@@ -52,7 +55,10 @@
         </section>
     </main>
 
-    <script src="/assets/js/index.js"></script>
+    <!-- <h1>Testing TypeScript</h1>
+    <div id="ts-status">Waiting for TypeScript...</div> -->
+
+    <script type="module" src="js/index.js"></script>
 </body>
 
 </html>
