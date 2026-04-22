@@ -137,6 +137,19 @@ body {
   margin-top: 20px;
 }
 
+.input-error {
+  border: 1px solid #e53e3e;
+  background-color: #fff5f5;
+}
+
+.field-error {
+  display: block;
+  color: #e53e3e;
+  font-size: 0.8rem;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
 /* MEDIA QUERRIES */
 
 @media screen and (max-width: 768px) {
