@@ -1,3 +1,9 @@
+// Import Vercel Analytics
+import { inject } from '@vercel/analytics';
+
+// Initialize Vercel Web Analytics
+inject();
+
 // Sanitization function
 function sanitizeInput(value, type = "text") {
   let sanitized = value.trim();
