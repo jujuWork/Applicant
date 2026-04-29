@@ -72,7 +72,7 @@ body {
   height: 100%;
 
   img {
-    width: clamp(150px, 15vw, 300px);
+    width: clamp(150px, 10vw, 200px);
     filter: drop-shadow(1px 4px 1px var(--border));
   }
 
@@ -164,6 +164,8 @@ body {
 
 @media screen and (min-width: 769px) {
   .grid-container {
+    border: none;
+    margin: 0 auto;
     height: 100vh;
   }
 
