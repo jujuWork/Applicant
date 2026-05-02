@@ -93,15 +93,30 @@ document
 
     // Send to n8n webhook
     try {
-      const response = await fetch("YOUR_N8N_WEBHOOK_URL", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(sanitizedData),
-      });
-      console.log("Success:", response);
+      const response = await fetch(
+        "http://localhost:5678/webhook-test/7e68c608-4243-4187-a3c6-7993b4e6a2f5",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(sanitizedData),
+        },
+      );
+      console.log("Response:", response);
+      console.log("Status:", response.status);
+
+      if (!response.ok) {
+        throw new Error(
+          `Webhook returned status ${response.status}: ${response.statusText}`,
+        );
+      }
+
+      const responseData = await response.json();
+      console.log("Webhook response:", responseData);
+
       alert("Form submitted successfully!");
+      e.target.reset();
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting form");
+      alert(`Error submitting form: ${error.message}`);
     }
   });
