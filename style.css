@@ -12,6 +12,7 @@
 
 :root {
   --border: #1d242b;
+  --main-color: #e2041b;
 }
 
 * {
@@ -21,45 +22,18 @@
   font-family: "Poppins";
 }
 
-html {
-  /* background-color: #c7eeff; */
-}
-
 body {
   width: 100%;
   max-width: 1024px;
-  min-width: 200px;
+  min-width: 300px;
   margin: 0 auto;
   height: 100%;
 }
 
-/* 
-======== GRID SETTING ======== 
-*/
-
-.grid-container {
-  display: grid;
-  align-content: center;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-areas:
-    "info info content content content"
-    "info info content content content"
-    "info info content content content"
-    "info info content content content"
-    "info info content content content";
-  border: 1px solid var(--border);
-  position: relative;
-}
-
-.info {
-  grid-area: info;
-  position: relative;
-}
-
-.content {
-  grid-area: content;
-  position: relative;
+.flex__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* CONTENT */
@@ -69,16 +43,39 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
   height: 100%;
+  gap: 0.75em;
 
-  img {
-    width: clamp(150px, 10vw, 200px);
-    filter: drop-shadow(1px 4px 1px var(--border));
+  .company__logo {
+    width: 250px;
+    filter: drop-shadow(1px 2px 1px var(--border));
+  }
+
+  .hiring {
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 1.2em;
+  }
+
+  h2 {
+    width: 100%;
+
+    span {
+      text-transform: uppercase;
+      font-style: italic;
+      color: var(--main-color);
+    }
+  }
+
+  .hiring__info {
+    font-size: 12px;
+    text-align: justify;
   }
 
   .line {
     border-bottom: 1px solid var(--border);
-    width: 80%;
+    width: 100%;
     margin: 10px 0 10px 0;
   }
 }
@@ -157,16 +154,6 @@ body {
 }
 
 /* MEDIA QUERRIES */
-
-@media screen and (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "info"
-      "content";
-  }
-}
 
 @media screen and (min-width: 769px) {
   .grid-container {
