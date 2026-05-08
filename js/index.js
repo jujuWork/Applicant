@@ -96,7 +96,7 @@ form.addEventListener("submit", async (e) => {
   Object.keys(sanitizedData).forEach((key) => {
     web3FormData.append(key, sanitizedData[key]);
   });
-  web3FormData.append("access_key", "446b5f13-0bca-4c11-be3b-244b4a9c1363");
+  web3FormData.append("access_key", "fc5ffd72-9240-403c-8d22-caa0d5924d91");
 
   const originalText = submitBtn.textContent;
 
