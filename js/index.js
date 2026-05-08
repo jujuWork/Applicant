@@ -59,64 +59,68 @@ function displayErrors(errors) {
 }
 
 // Form submission handler
-document
-  .getElementById("registrationForm")
-  .addEventListener("submit", async (e) => {
-    e.preventDefault();
+const form = document.getElementById("registrationForm");
+const submitBtn = form.querySelector('button[type="submit"]');
 
-    const formData = new FormData(e.target);
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    // Validate required fields
-    const errors = validateForm(formData);
-    if (Object.keys(errors).length > 0) {
-      displayErrors(errors);
-      return;
-    }
+  const formData = new FormData(form);
 
-    // Clear previous errors if validation passes
-    document.querySelectorAll(".field-error").forEach((el) => el.remove());
-    document
-      .querySelectorAll(".input-error")
-      .forEach((el) => el.classList.remove("input-error"));
+  // Validate required fields
+  const errors = validateForm(formData);
+  if (Object.keys(errors).length > 0) {
+    displayErrors(errors);
+    return;
+  }
 
-    // Sanitize each field
-    const sanitizedData = {
-      lastName: sanitizeInput(formData.get("lastName"), "text"),
-      firstName: sanitizeInput(formData.get("firstName"), "text"),
-      telephone: sanitizeInput(formData.get("telephone"), "number"),
-      address: sanitizeInput(formData.get("address"), "text"),
-      age: parseInt(sanitizeInput(formData.get("age"), "number")),
-      email: sanitizeInput(formData.get("email"), "email"),
-      visa: sanitizeInput(formData.get("visa"), "text"),
-      license: sanitizeInput(formData.get("license"), "text"),
-    };
+  // Clear previous errors if validation passes
+  document.querySelectorAll(".field-error").forEach((el) => el.remove());
+  document
+    .querySelectorAll(".input-error")
+    .forEach((el) => el.classList.remove("input-error"));
 
-    // Send to n8n webhook
-    try {
-      const response = await fetch(
-        "http://localhost:5678/webhook-test/7e68c608-4243-4187-a3c6-7993b4e6a2f5",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(sanitizedData),
-        },
-      );
-      console.log("Response:", response);
-      console.log("Status:", response.status);
+  // Sanitize each field
+  const sanitizedData = {
+    lastName: sanitizeInput(formData.get("lastName"), "text"),
+    firstName: sanitizeInput(formData.get("firstName"), "text"),
+    telephone: sanitizeInput(formData.get("telephone"), "number"),
+    address: sanitizeInput(formData.get("address"), "text"),
+    age: parseInt(sanitizeInput(formData.get("age"), "number")),
+    email: sanitizeInput(formData.get("email"), "email"),
+    visa: sanitizeInput(formData.get("visa"), "text"),
+  };
 
-      if (!response.ok) {
-        throw new Error(
-          `Webhook returned status ${response.status}: ${response.statusText}`,
-        );
-      }
-
-      const responseData = await response.json();
-      console.log("Webhook response:", responseData);
-
-      alert("Form submitted successfully!");
-      e.target.reset();
-    } catch (error) {
-      console.error("Error:", error);
-      alert(`Error submitting form: ${error.message}`);
-    }
+  // Prepare FormData with sanitized data for Web3Forms
+  const web3FormData = new FormData();
+  Object.keys(sanitizedData).forEach((key) => {
+    web3FormData.append(key, sanitizedData[key]);
   });
+  web3FormData.append("access_key", "446b5f13-0bca-4c11-be3b-244b4a9c1363");
+
+  const originalText = submitBtn.textContent;
+
+  submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: web3FormData,
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Success! Your message has been sent.");
+      form.reset();
+    } else {
+      alert("Error: " + data.message);
+    }
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+});

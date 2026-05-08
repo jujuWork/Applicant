@@ -60,8 +60,11 @@ body {
 
   h2 {
     width: 100%;
+    font-weight: 900;
+    font-family: Montserrat, sans-serif;
 
     span {
+      font-family: Montserrat, sans-serif;
       text-transform: uppercase;
       font-style: italic;
       color: var(--main-color);
@@ -91,7 +94,7 @@ body {
   margin: 0 auto;
 
   h1 {
-    font-size: clamp(20px, 5vw, 40px);
+    font-size: clamp(15px, 5vw, 30px);
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     text-transform: uppercase;
