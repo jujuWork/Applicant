@@ -141,7 +141,7 @@ body {
   text-transform: uppercase;
   border: none;
   border-radius: 10px;
-  background-color: var(--border);
+  background-color: var(--main-color);
   color: #fafafa;
   letter-spacing: 2px;
   margin-top: 20px;

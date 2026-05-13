@@ -88,7 +88,7 @@ form.addEventListener("submit", async (e) => {
     address: sanitizeInput(formData.get("address"), "text"),
     age: parseInt(sanitizeInput(formData.get("age"), "number")),
     email: sanitizeInput(formData.get("email"), "email"),
-    visa: sanitizeInput(formData.get("visa"), "text"),
+    visa: sanitizeInput(formData.get("status"), "text"),
   };
 
   // Prepare FormData with sanitized data for Web3Forms
