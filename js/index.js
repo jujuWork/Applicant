@@ -112,8 +112,9 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      alert("Success! Your message has been sent.");
-      form.reset();
+      // alert("Success! Your message has been sent.");
+      // form.reset();
+      window.location.href = "/pages/ty_page.html";
     } else {
       alert("Error: " + data.message);
     }
