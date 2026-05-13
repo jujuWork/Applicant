@@ -132,6 +132,11 @@ body {
   label {
     letter-spacing: 1.25px;
   }
+
+  .flex__input {
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .btn__submit {
@@ -158,20 +163,4 @@ body {
   font-size: 0.8rem;
   margin-top: 2px;
   margin-bottom: 6px;
-}
-
-/* MEDIA QUERRIES */
-
-@media screen and (min-width: 769px) {
-  .grid-container {
-    border: none;
-    margin: 0 auto;
-    height: 100vh;
-  }
-
-  .right__side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }

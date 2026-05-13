@@ -22,17 +22,26 @@ function validateForm(formData) {
     "firstName",
     "telephone",
     "address",
-    "age",
     "email",
+    "status",
   ];
 
   requiredFields.forEach((field) => {
-    const value = formData.get(field).trim();
+    const value = formData.get(field)?.trim();
     if (!value) {
       errors[field] =
         `${field.charAt(0).toUpperCase() + field.slice(1)} is required`;
     }
   });
+
+  // Validate birth date fields as a group
+  const birthDay = formData.get("birth_day")?.trim();
+  const birthMonth = formData.get("birth_month")?.trim();
+  const birthYear = formData.get("birth_year")?.trim();
+
+  if (!birthDay || !birthMonth || !birthYear) {
+    errors["birth"] = "Birth is required";
+  }
 
   return errors;
 }
@@ -47,13 +56,25 @@ function displayErrors(errors) {
 
   // Show new errors
   Object.keys(errors).forEach((fieldName) => {
-    const input = document.querySelector(`input[name="${fieldName}"]`);
-    if (input) {
-      input.classList.add("input-error");
-      const errorDiv = document.createElement("span");
-      errorDiv.classList.add("field-error");
-      errorDiv.textContent = errors[fieldName];
-      input.parentElement.insertBefore(errorDiv, input.nextSibling);
+    if (fieldName === "birth") {
+      // Special handling for birth div
+      const birthDiv = document.querySelector(`div[data-name="birth"]`);
+      if (birthDiv) {
+        birthDiv.classList.add("input-error");
+        const errorDiv = document.createElement("span");
+        errorDiv.classList.add("field-error");
+        errorDiv.textContent = errors[fieldName];
+        birthDiv.parentElement.insertBefore(errorDiv, birthDiv.nextSibling);
+      }
+    } else {
+      const input = document.querySelector(`input[name="${fieldName}"]`);
+      if (input) {
+        input.classList.add("input-error");
+        const errorDiv = document.createElement("span");
+        errorDiv.classList.add("field-error");
+        errorDiv.textContent = errors[fieldName];
+        input.parentElement.insertBefore(errorDiv, input.nextSibling);
+      }
     }
   });
 }
@@ -86,9 +107,11 @@ form.addEventListener("submit", async (e) => {
     firstName: sanitizeInput(formData.get("firstName"), "text"),
     telephone: sanitizeInput(formData.get("telephone"), "number"),
     address: sanitizeInput(formData.get("address"), "text"),
-    age: parseInt(sanitizeInput(formData.get("age"), "number")),
+    birth_day: sanitizeInput(formData.get("birth_day"), "number"),
+    birth_month: sanitizeInput(formData.get("birth_month"), "number"),
+    birth_year: sanitizeInput(formData.get("birth_year"), "number"),
     email: sanitizeInput(formData.get("email"), "email"),
-    visa: sanitizeInput(formData.get("status"), "text"),
+    status: sanitizeInput(formData.get("status"), "text"),
   };
 
   // Prepare FormData with sanitized data for Web3Forms
