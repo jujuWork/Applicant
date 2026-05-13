@@ -121,7 +121,9 @@ form.addEventListener("submit", async (e) => {
   } catch (error) {
     alert("Something went wrong. Please try again.");
   } finally {
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
+    if (submitBtn) {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
   }
 });
