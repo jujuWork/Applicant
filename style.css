@@ -22,22 +22,21 @@ header {
 }
 
 .nav__container {
-  border: 1px solid red;
   display: flex;
   position: relative;
 }
 
 .nav__list {
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
   list-style: none;
-  width: 100%;
+  margin: 0 auto;
+  flex: 1;
 }
 
 .nav__item {
   position: relative;
   width: 100%;
-  flex: 1;
+  border: 1px solid red;
 }
