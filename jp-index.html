@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求人申請</title>
+
+    <link rel="stylesheet" href="/assets/css/application.css">
+</head>
+
+<body>
+
+    <main class="flex__container">
+        <section class="content">
+            <div class="form" id="form">
+                <div class="company__info">
+                    <img src="/assets/images/main-logo.svg" alt="main-logo" class="company__logo">
+                    <p class="hiring">採用中</p>
+                    <h2>私たちの<span>チーム</span>に参加しませんか。</h2>
+                    <p class="hiring__info">下のフォームに記入してください。通常、1～3営業日以内にご回答します。</p>
+                    <div class="line"></div>
+                </div>
+                <h1>登録</h1>
+                <div class="form__container">
+                    <form action="https://api.web3forms.com/submit" method="post" id="registrationForm">
+
+                        <input type="hidden" name="access_key" value="fc5ffd72-9240-403c-8d22-caa0d5924d91">
+                        <input type="hidden" name="subject" value="Application Form">
+
+                        <label for="lastName">姓:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="山田">
+
+                        <label for="firstName">名:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="太郎">
+
+                        <label for="birth-day">生年月日:</label>
+                        <div class="flex__input" name="birth" data-name="birth">
+                            <input type="number" id="birth-day" name="birth_day" placeholder="日" min="1" max="31">
+                            <input type="number" id="birth_month" name="birth_month" placeholder="月" min="1" max="12">
+                            <input type="number" id="birth_year" name="birth_year" placeholder="年" min="1900"
+                                max="2100">
+                        </div>
+
+                        <label for="telephone">電話番号:</label>
+                        <input type="number" id="telephone" name="telephone" placeholder="*******123">
+
+                        <label for="address">住所:</label>
+                        <input type="text" id="address" name="address" placeholder="現在の住所">
+
+
+                        <label for="email">メール:</label>
+                        <input type="email" id="email" name="email" placeholder="johndoe@email.com">
+
+                        <label for="status">雇用状況:</label>
+                        <input type="text" id="status" name="status" placeholder="雇用中/失業中">
+
+                        <button type="submit" class="btn__submit">送信</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/index.js"></script>
+</body>
+
+</html>

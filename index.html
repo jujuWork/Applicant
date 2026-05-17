@@ -30,30 +30,31 @@
                         <input type="hidden" name="subject" value="Application Form">
 
                         <label for="lastName">Last Name:</label>
-                        <input type="text" name="lastName" placeholder="Doe">
+                        <input type="text" id="lastName" name="lastName" placeholder="Doe">
 
                         <label for="firstName">First Name:</label>
-                        <input type="text" name="firstName" placeholder="John">
+                        <input type="text" id="firstName" name="firstName" placeholder="John">
 
                         <label for="birth-day">Date of Birth:</label>
                         <div class="flex__input" name="birth" data-name="birth">
-                            <input type="number" name="birth_day" placeholder="DD" min="1" max="31">
-                            <input type="number" name="birth_month" placeholder="MM" min="1" max="12">
-                            <input type="number" name="birth_year" placeholder="YYYY" min="1900" max="2100">
+                            <input type="number" id="birth-day" name="birth_day" placeholder="DD" min="1" max="31">
+                            <input type="number" id="birth_month" name="birth_month" placeholder="MM" min="1" max="12">
+                            <input type="number" id="birth_year" name="birth_year" placeholder="YYYY" min="1900"
+                                max="2100">
                         </div>
 
                         <label for="telephone">Telephone:</label>
-                        <input type="number" name="telephone" placeholder="*******123">
+                        <input type="number" id="telephone" name="telephone" placeholder="*******123">
 
                         <label for="address">Address:</label>
-                        <input type="text" name="address" placeholder="Current Address">
+                        <input type="text" id="address" name="address" placeholder="Current Address">
 
 
                         <label for="email">Email:</label>
-                        <input type="email" name="email" placeholder="johndoe@email.com">
+                        <input type="email" id="email" name="email" placeholder="johndoe@email.com">
 
                         <label for="status">Work Status:</label>
-                        <input type="text" name="status" placeholder="Employed / Unemployed">
+                        <input type="text" id="status" name="status" placeholder="Employed / Unemployed">
 
                         <button type="submit" class="btn__submit">Submit</button>
                     </form>
